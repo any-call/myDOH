@@ -56,3 +56,23 @@ func TestQueryTxt(t *testing.T) {
 
 	t.Log("ret is :", ret, "ret 2 :", ret2)
 }
+
+func TestEncryptTxt(t *testing.T) {
+	orgStr := "this is a testthis is a testthis is a testthis is a test"
+	key := "098765453209876545320987654532qa"
+	t.Log("org str is :", orgStr)
+	enStr, err := EncryptTxt(orgStr, []byte(key))
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	t.Log("enStr is:", enStr, ";len is :", len(enStr))
+
+	decStr, err := DecryptTxt(enStr, []byte(key))
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	t.Log("decStr is :", decStr)
+}
