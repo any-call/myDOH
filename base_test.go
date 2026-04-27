@@ -58,8 +58,8 @@ func TestQueryTxt(t *testing.T) {
 }
 
 func TestEncryptTxt(t *testing.T) {
-	orgStr := "this is a testthis is a testthis is a testthis is a test"
-	key := "098765453209876545320987654532qa"
+	orgStr := "https://api.okaa.top"
+	key := "jx6dygpNV8Knd88JUeBRkeES8W66KtdL"
 	t.Log("org str is :", orgStr)
 	enStr, err := EncryptTxt(orgStr, []byte(key))
 	if err != nil {
@@ -75,4 +75,14 @@ func TestEncryptTxt(t *testing.T) {
 	}
 
 	t.Log("decStr is :", decStr)
+}
+
+func TestDecryptTxt(t *testing.T) {
+	str, err := DecryptTxt("sIrrjlArxle/qaI7d8N3fP4UPj3Zc0weyqQTDPpcMVPR3FA+Z4UqsLV7U4zXRVQw", []byte("jx6dygpNV8Knd88JUeBRkeES8W66KtdL"))
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	t.Log("str is :", str)
 }
